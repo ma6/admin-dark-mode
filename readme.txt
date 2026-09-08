@@ -3,7 +3,7 @@ Contributors: martingude
 Tested up to: 6.7
 Requires at least: 6.3
 Requires PHP: 7.4
-Stable tag: 0.1.3
+Stable tag: 0.1.4
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,13 @@ fields, borders and focus rings invisible. This one does neither.
 3. Pick a scheme from the toolbar or your profile. New users start on Auto.
 
 == Changelog ==
+
+= 0.1.4 =
+* Dark "Connectors" screen (WP 7.1 core, options-connectors.php) — a React
+  SPA whose bootstrap forces `body.js { background:#fff }`.
+* `@wordpress/components` Card / Surface / Item / ItemGroup dark, so any
+  plugin built on those goes dark too.
+* Media Library grid: dark thumbnail tiles and filename labels.
 
 = 0.1.3 =
 * Dark core screens the earlier passes missed: Site Health, Themes, the

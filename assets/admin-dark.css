@@ -686,6 +686,71 @@ p.popular-tags,
 	color: var(--oad-text-muted) !important;
 }
 
+/* Core "Connectors" screen (WP 7.1, options-connectors.php) — a React SPA
+ * whose bootstrap inlines `body.js { background:#fff }`, so the page's own
+ * body class has to be overridden here. Also used by the AI Services plugin
+ * and any plugin registering a connector. */
+body.options-connectors-php,
+body.options-connectors-php.js,
+body.settings_page_ais_services,
+body.settings_page_ais_services.js {
+	background-color: var(--oad-canvas) !important;
+}
+.boot-layout-container,
+.boot-layout,
+.boot-layout__stage,
+.boot-notices,
+body.options-connectors-php .admin-ui-navigable-region,
+body.settings_page_ais_services .admin-ui-navigable-region,
+.connectors-page,
+.connectors-home,
+.connectors-list,
+.ais-header,
+.ais-footer,
+.ais-interface,
+.ais-settings,
+.ais-notices {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+.connector-item,
+[class*="connector-item--"] {
+	background-color: var(--oad-surface-2) !important;
+	border-color: var(--oad-border) !important;
+}
+/* The React app's regions are CSS-module classes with per-build hashes
+ * (`<hash>__header`); the local suffix is stable, so match on that, scoped
+ * to this page so it can't leak elsewhere. */
+body.options-connectors-php [class*="__header"],
+body.options-connectors-php [class*="__stack"],
+body.options-connectors-php [class*="__page"],
+body.options-connectors-php [class*="__stage"],
+body.settings_page_ais_services [class*="__header"],
+body.settings_page_ais_services [class*="__page"] {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+.boot-layout h1,
+.boot-layout h2,
+.boot-layout p,
+.boot-layout li,
+body.options-connectors-php h1,
+body.options-connectors-php h2,
+body.options-connectors-php p,
+.connector-item .components-text,
+.connector-item .components-truncate,
+.ais-settings label,
+.ais-settings p {
+	color: var(--oad-text) !important;
+}
+.ai-plugin-callout {
+	background-color: var(--oad-surface-2) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+
 /* WPS Limit Login (WPServeur) */
 .wps-wrap,
 .wps-content,
@@ -996,6 +1061,33 @@ ul.category-tabs li:not(.tabs) a,
 .ui-widget-overlay {
 	background: rgba(0, 0, 0, 0.7) !important;
 }
+/* Library grid tiles + the drop zone (Media → Library, Add Media File) */
+.attachment-preview,
+.wp-core-ui .attachment-preview,
+.media-frame .attachment-preview,
+.media-frame .uploader-window,
+.uploader-inline,
+.upload-ui,
+#drag-drop-area,
+.media-frame .uploader-editor {
+	background-color: var(--oad-surface-2) !important;
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text) !important;
+}
+.attachment .filename,
+.media-frame .filename,
+.attachment .filename .fileglobal {
+	background-color: rgba(26, 28, 31, 0.85) !important;
+	color: var(--oad-text) !important;
+}
+.attachments-browser .attachment.selected .thumbnail,
+.media-frame .attachment.details .thumbnail {
+	box-shadow: inset 0 0 0 3px var(--oad-canvas), inset 0 0 0 7px var(--oad-accent) !important;
+}
+.upload-php .wp-list-table .media-icon img,
+.attachment-preview .icon {
+	background-color: transparent !important;
+}
 
 /* -------------------------------------------------------------- Code ---- */
 
@@ -1111,7 +1203,16 @@ tt,
 .components-modal__content,
 .components-modal__header,
 .components-guide__container,
-.components-guide__page {
+.components-guide__page,
+.components-card,
+.components-card__header,
+.components-card__body,
+.components-card__footer,
+.components-card__media,
+.components-surface,
+.components-item,
+.components-item-group,
+.components-navigator-screen {
 	background: var(--oad-surface-2) !important;
 	color: var(--oad-text) !important;
 	border-color: var(--oad-border) !important;
