@@ -3,7 +3,7 @@ Contributors: martingude
 Tested up to: 6.7
 Requires at least: 6.3
 Requires PHP: 7.4
-Stable tag: 0.1.5
+Stable tag: 0.1.6
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,11 @@ fields, borders and focus rings invisible. This one does neither.
 3. Pick a scheme from the toolbar or your profile. New users start on Auto.
 
 == Changelog ==
+
+= 0.1.6 =
+* BackWPup: the remaining faint bits — `text-primary-*` labels, the
+  "Backup Now" button, and pencil/gear icons that hard-code fill="#041515"
+  as an SVG attribute.
 
 = 0.1.5 =
 * BackWPup: fixed near-black text and fill="#000" monochrome icons across

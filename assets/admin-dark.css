@@ -839,6 +839,7 @@ body[class*="backwpup"] [class*="text-grey"],
 body[class*="backwpup"] [class*="text-gray"],
 body[class*="backwpup"] [class*="text-black"],
 body[class*="backwpup"] [class*="text-dark"],
+body[class*="backwpup"] [class*="text-primary"],
 body[class*="backwpup"] [class*="text-title"],
 body[class*="backwpup"] [class*="text-body"],
 body[class*="backwpup"] .bwpup-title,
@@ -849,8 +850,26 @@ body[class*="backwpup"] p,
 body[class*="backwpup"] label,
 body[class*="backwpup"] td,
 body[class*="backwpup"] th,
-body[class*="backwpup"] a {
+body[class*="backwpup"] #wpbody-content a,
+body[class*="backwpup"] #wpbody-content span {
 	color: var(--oad-text) !important;
+}
+body[class*="backwpup"] [class*="border-primary"],
+body[class*="backwpup"] [class*="border-black"] {
+	border-color: var(--oad-border-strong) !important;
+}
+/* Icons that hard-code near-black as a presentation attribute */
+body[class*="backwpup"] svg [fill="#041515"],
+body[class*="backwpup"] svg [fill="#000"],
+body[class*="backwpup"] svg [fill="#000000"],
+body[class*="backwpup"] svg [fill="black"] {
+	fill: var(--oad-text) !important;
+}
+body[class*="backwpup"] svg [stroke="#041515"],
+body[class*="backwpup"] svg [stroke="#000"],
+body[class*="backwpup"] svg [stroke="#000000"],
+body[class*="backwpup"] svg [stroke="black"] {
+	stroke: var(--oad-text) !important;
 }
 body[class*="backwpup"] [class*="text-grey-4"],
 body[class*="backwpup"] [class*="text-grey-5"],
