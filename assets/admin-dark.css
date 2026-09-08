@@ -685,6 +685,32 @@ p.popular-tags,
 .MuiSvgIcon-root {
 	color: var(--oad-text-muted) !important;
 }
+/* MUI popups render in a portal at <body> level, outside #wpbody-content —
+ * the Autocomplete / Select dropdown list and any Menu/Popover paper. */
+.MuiPaper-root,
+.MuiPopover-paper,
+.MuiMenu-paper,
+.MuiMenu-list,
+.MuiAutocomplete-paper,
+.MuiAutocomplete-listbox,
+.MuiAutocomplete-popper > div {
+	background-color: var(--oad-surface-2) !important;
+	color: var(--oad-text) !important;
+	border: 1px solid var(--oad-border) !important;
+}
+.MuiAutocomplete-option,
+.MuiMenuItem-root,
+.MuiAutocomplete-noOptions,
+.MuiAutocomplete-loading {
+	color: var(--oad-text) !important;
+}
+.MuiAutocomplete-option:hover,
+.MuiAutocomplete-option.Mui-focused,
+.MuiAutocomplete-option[aria-selected="true"],
+.MuiMenuItem-root:hover,
+.MuiMenuItem-root.Mui-selected {
+	background-color: var(--oad-surface-3) !important;
+}
 
 /* Core "Connectors" screen (WP 7.1, options-connectors.php) — a React SPA
  * whose bootstrap inlines `body.js { background:#fff }`, so the page's own
@@ -805,6 +831,78 @@ li.itemDetail {
 #wpbody-content [class*="border-grey-"],
 #wpbody-content [class*="border-gray-"] {
 	border-color: var(--oad-border) !important;
+}
+
+/* BackWPup — a fully Tailwind-utility UI with near-black text and
+ * fill="#000" monochrome icons. Scoped to every BackWPup admin page. */
+body[class*="backwpup"] [class*="text-grey"],
+body[class*="backwpup"] [class*="text-gray"],
+body[class*="backwpup"] [class*="text-black"],
+body[class*="backwpup"] [class*="text-dark"],
+body[class*="backwpup"] [class*="text-title"],
+body[class*="backwpup"] [class*="text-body"],
+body[class*="backwpup"] .bwpup-title,
+body[class*="backwpup"] h1,
+body[class*="backwpup"] h2,
+body[class*="backwpup"] h3,
+body[class*="backwpup"] p,
+body[class*="backwpup"] label,
+body[class*="backwpup"] td,
+body[class*="backwpup"] th,
+body[class*="backwpup"] a {
+	color: var(--oad-text) !important;
+}
+body[class*="backwpup"] [class*="text-grey-4"],
+body[class*="backwpup"] [class*="text-grey-5"],
+body[class*="backwpup"] [class*="text-gray-4"],
+body[class*="backwpup"] [class*="text-gray-5"] {
+	color: var(--oad-text-muted) !important;
+}
+body[class*="backwpup"] a:hover {
+	color: var(--oad-link-hover) !important;
+}
+body[class*="backwpup"] svg:not([class*="ogo"]),
+body[class*="backwpup"] svg:not([class*="ogo"]) path,
+body[class*="backwpup"] svg:not([class*="ogo"]) rect,
+body[class*="backwpup"] svg:not([class*="ogo"]) circle,
+body[class*="backwpup"] svg:not([class*="ogo"]) polygon,
+body[class*="backwpup"] [class*="fill-grey"],
+body[class*="backwpup"] [class*="fill-black"],
+body[class*="backwpup"] [class*="fill-dark"] {
+	fill: currentColor !important;
+	color: var(--oad-text) !important;
+}
+body[class*="backwpup"] svg:not([class*="ogo"]) [stroke],
+body[class*="backwpup"] [class*="stroke-grey"],
+body[class*="backwpup"] [class*="stroke-black"],
+body[class*="backwpup"] [class*="stroke-dark"] {
+	stroke: currentColor !important;
+}
+body[class*="backwpup"] [class*="border-dashed"],
+body[class*="backwpup"] [class*="border-grey"],
+body[class*="backwpup"] [class*="border-gray"] {
+	border-color: var(--oad-border-strong) !important;
+}
+body[class*="backwpup"] select {
+	background-image: none !important; /* BackWPup draws its own caret */
+}
+body[class*="backwpup"] [class*="bg-primary"] {
+	background-color: var(--oad-accent) !important;
+	color: var(--oad-on-accent) !important;
+}
+
+/* Add Plugins → Upload Plugin (core, plugin-install.php?tab=upload) */
+.upload-plugin,
+.upload-plugin-wrap,
+#upload-plugin-wrap,
+.wp-upload-form,
+.plugin-install-php .upload-plugin {
+	background-color: var(--oad-surface) !important;
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text) !important;
+}
+.upload-plugin .install-help {
+	color: var(--oad-text-muted) !important;
 }
 
 /* ----------------------------------------------------------- Notices ---- */
@@ -959,6 +1057,41 @@ ul.category-tabs li:not(.tabs) a,
 .site-health-issues-wrapper .badge {
 	color: var(--oad-text) !important;
 	border-color: var(--oad-border-strong) !important;
+}
+
+/* ------------------------------------------------------ Privacy Settings - */
+
+.privacy-settings-header,
+.privacy-settings-body,
+.privacy-settings-tabs,
+.privacy-settings-tabs-wrapper,
+.privacy-settings-accordion,
+.privacy-settings-accordion-trigger,
+.privacy-settings-accordion-panel,
+.tools-privacy-policy-page,
+.tools-privacy-edit {
+	background-color: var(--oad-surface) !important;
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text) !important;
+}
+.privacy-settings-header h1,
+.privacy-settings-title,
+.privacy-settings-subtitle,
+.privacy-settings-accordion-heading,
+.privacy-settings-accordion-trigger .title {
+	color: var(--oad-text) !important;
+}
+.privacy-settings-tab {
+	color: var(--oad-text-muted) !important;
+}
+.privacy-settings-tab.active,
+.privacy-settings-tab:hover {
+	color: var(--oad-text) !important;
+	background-color: var(--oad-surface-2) !important;
+}
+.privacy-settings-accordion-trigger:hover,
+.privacy-settings-accordion-trigger[aria-expanded="true"] {
+	background-color: var(--oad-surface-2) !important;
 }
 
 /* ------------------------------------------------------------- Themes --- */
