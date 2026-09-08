@@ -1274,12 +1274,18 @@ tt,
 .components-panel__body,
 .components-panel__header,
 .edit-post-meta-boxes-area,
+.edit-post-meta-boxes-area__container,
+.edit-post-meta-boxes-main,
+.editor-meta-boxes,
+.edit-post-layout__metaboxes,
+.edit-post-meta-boxes-area__resize-handle,
 .block-editor-block-list__breadcrumb,
 .block-editor-block-breadcrumb,
 .editor-document-tools,
 .block-editor-list-view-leaf,
 .editor-list-view-sidebar,
 .editor-layout__toggle-publish-panel,
+.editor-layout__toggle-entities-saved-states-panel,
 .editor-post-publish-panel {
 	background-color: var(--oad-surface) !important;
 	color: var(--oad-text) !important;
