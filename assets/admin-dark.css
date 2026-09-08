@@ -1258,6 +1258,123 @@ tt,
  * assets/editor-canvas-dark.css. Gutenberg class names shift between
  * releases, so this section is best-effort by nature. */
 
+/* Retarget the @wordpress/components design tokens for the whole editor UI
+ * and every popover/modal it spawns. This is what actually makes the icons,
+ * labels, borders and control fills follow the dark theme instead of
+ * fighting them one class at a time — core hard-codes #1e1e1e as the
+ * component foreground otherwise. */
+.interface-interface-skeleton,
+.block-editor-editor-skeleton,
+.editor-editor-interface,
+.components-popover,
+.components-modal__frame,
+.components-drop-zone,
+.edit-post-layout,
+.editor-styles-wrapper {
+	--wp-components-color-foreground: var(--oad-text);
+	--wp-components-color-foreground-inverted: var(--oad-on-accent);
+	--wp-components-color-background: var(--oad-surface);
+	--wp-components-color-accent: var(--oad-accent);
+	--wp-components-color-accent-darker-10: var(--oad-link-hover);
+	--wp-components-color-accent-darker-20: var(--oad-link-hover);
+	--wp-components-color-accent-inverted: var(--oad-on-accent);
+	--wp-components-color-gray-100: var(--oad-surface-2);
+	--wp-components-color-gray-200: var(--oad-surface-2);
+	--wp-components-color-gray-300: var(--oad-border);
+	--wp-components-color-gray-400: var(--oad-border-strong);
+	--wp-components-color-gray-600: var(--oad-text-muted);
+	--wp-components-color-gray-700: var(--oad-text-muted);
+	--wp-components-color-gray-800: var(--oad-text);
+	--wp-components-color-gray-900: var(--oad-text);
+	--wp-admin-theme-color: var(--oad-accent);
+	--wp-admin-theme-color-darker-10: var(--oad-link-hover);
+	--wp-admin-theme-color-darker-20: var(--oad-link-hover);
+	--wp-block-synced-color: var(--oad-link);
+}
+
+/* The floating block toolbar's own bar, and any accessible-toolbar, still
+ * paint white from a non-token rule. */
+.block-editor-block-contextual-toolbar,
+.components-accessible-toolbar,
+.block-editor-block-toolbar,
+.block-editor-block-toolbar__slot,
+.components-toolbar,
+.components-toolbar-group {
+	background-color: var(--oad-surface) !important;
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text) !important;
+}
+/* A pressed components button reads background:var(--...-foreground), which
+ * the token retarget just turned light — force the dark active chip back. */
+.components-button.is-pressed,
+.components-button.is-pressed:hover,
+.components-button.is-primary.is-pressed {
+	background-color: var(--oad-surface-3) !important;
+	color: var(--oad-text) !important;
+}
+.components-button.is-pressed svg {
+	fill: currentColor !important;
+}
+
+/* Toolbar / history / dropdown-toggle icons and labels that still read
+ * #1e1e1e from an explicit rule rather than the token. */
+.block-editor-block-toolbar .components-button,
+.editor-document-tools .components-button,
+.edit-post-header .components-button,
+.editor-header .components-button,
+.components-dropdown-menu__toggle,
+.editor-history__undo,
+.editor-history__redo,
+.editor-preview-dropdown__toggle,
+.block-editor-block-breadcrumb__button,
+.block-editor-block-card__title,
+.editor-document-bar__post-type-label,
+.editor-document-bar__title {
+	color: var(--oad-text) !important;
+}
+.block-editor-block-toolbar .components-button svg,
+.editor-document-tools .components-button svg,
+.edit-post-header .components-button svg,
+.editor-header .components-button svg,
+.components-dropdown-menu__toggle svg,
+.editor-history__undo svg,
+.editor-history__redo svg,
+.editor-preview-dropdown__toggle svg,
+.block-editor-block-icon svg,
+.components-menu-item__button svg {
+	fill: currentColor !important;
+}
+.block-editor-block-card__description,
+.block-editor-inserter__preview-content-missing,
+.components-form-token-field__help,
+.block-editor-block-card .block-editor-block-card__description {
+	color: var(--oad-text-muted) !important;
+}
+/* Font-size / alignment segmented controls */
+.components-toggle-group-control,
+.components-toggle-group-control-option-base {
+	background-color: var(--oad-surface-2) !important;
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text) !important;
+}
+.components-toggle-group-control-option-base[data-active-item="true"],
+.components-toggle-group-control__backdrop {
+	background-color: var(--oad-surface-3) !important;
+	color: var(--oad-text) !important;
+}
+/* Colour / gradient picker popover */
+.components-circular-option-picker__option-wrapper::before,
+.components-circular-option-picker__dropdown-link-action .components-button {
+	color: var(--oad-text) !important;
+}
+.components-color-picker,
+.react-colorful,
+.components-input-control__suffix,
+.components-color-picker__inputs-wrapper {
+	background-color: var(--oad-surface-2) !important;
+	color: var(--oad-text) !important;
+}
+
 .interface-interface-skeleton,
 .interface-interface-skeleton__header,
 .interface-interface-skeleton__body,

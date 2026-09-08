@@ -3,7 +3,7 @@ Contributors: martingude
 Tested up to: 6.7
 Requires at least: 6.3
 Requires PHP: 7.4
-Stable tag: 0.1.9
+Stable tag: 0.1.10
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,14 @@ fields, borders and focus rings invisible. This one does neither.
 3. Pick a scheme from the toolbar or your profile. New users start on Auto.
 
 == Changelog ==
+
+= 0.1.10 =
+* Block editor, big pass: retarget the @wordpress/components design tokens
+  (--wp-components-color-*) for the whole editor UI and its popovers, so the
+  block toolbar, inspector controls, dropdown menus, segmented controls,
+  history/preview icons, block descriptions and breadcrumb follow the dark
+  theme instead of core's hard-coded #1e1e1e. Fixes the white block
+  toolbar and the light "pressed" button state.
 
 = 0.1.9 =
 * Block editor: dark meta-boxes area at the bottom (.edit-post-meta-boxes-
