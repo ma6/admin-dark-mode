@@ -1331,10 +1331,56 @@ tt,
 .components-text-control__input,
 .components-textarea-control__input,
 .components-select-control__input,
+.components-search-control,
+.components-search-control__input,
+.block-editor-inserter__search,
 .block-editor-plain-text {
 	background: var(--oad-surface-2) !important;
 	color: var(--oad-text) !important;
 	box-shadow: inset 0 0 0 1px var(--oad-field-border) !important;
+}
+/* Block inserter panel + editor notices */
+.block-editor-tabbed-sidebar,
+.block-editor-tabbed-sidebar__tablist-and-close-button,
+.block-editor-inserter__quick-inserter,
+.block-editor-inserter__main-area,
+.block-editor-inserter__menu,
+.block-editor-inserter__panel-header,
+.block-editor-inserter__panel-content,
+.block-editor-inserter__quick-inserter-expand,
+.block-editor-block-patterns-explorer,
+.block-editor-list-view-tree {
+	background-color: var(--oad-surface-2) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+.block-editor-inserter__quick-inserter-expand,
+.block-editor-tabbed-sidebar__tab {
+	color: var(--oad-text) !important;
+}
+.components-notice,
+.components-notice-list .components-notice,
+.editor-notices .components-notice,
+.components-notice__content {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+.components-notice.is-warning {
+	border-left: 4px solid var(--oad-warn) !important;
+}
+.components-notice.is-error {
+	border-left: 4px solid var(--oad-err) !important;
+}
+.components-notice.is-success {
+	border-left: 4px solid var(--oad-ok) !important;
+}
+.components-notice.is-info {
+	border-left: 4px solid var(--oad-accent) !important;
+}
+.components-notice__content a,
+.components-notice__action.is-link {
+	color: var(--oad-link) !important;
 }
 .components-form-toggle .components-form-toggle__track {
 	background-color: var(--oad-surface-2) !important;
