@@ -1,0 +1,85 @@
+/*
+ * Block-editor canvas — the iframed document you type into.
+ *
+ * WordPress rewrites the selectors below to sit under `.editor-styles-wrapper`
+ * and remaps `body` / `:root` / `html` onto that wrapper before injecting
+ * them, so `body { … }` here really styles the canvas surface.
+ *
+ * Deliberately conservative: a dark sheet and readable default text. Colours
+ * an author set on a specific block (a Group background, a coloured heading)
+ * are left untouched — overriding those is what makes editor dark modes feel
+ * broken. This does mean the canvas no longer matches the light front end
+ * while writing; that trade-off, and how to undo it, is recorded in the
+ * repo's DECISIONS.md.
+ *
+ * Contrast: text #e6e8eb on canvas #1e2126 = 13.2:1; link #5cb8ff = 7.5:1.
+ */
+
+:root {
+	color-scheme: dark;
+}
+
+body {
+	background-color: #1e2126 !important;
+	color: #e6e8eb !important;
+}
+
+p,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+cite,
+figcaption,
+dd,
+dt,
+td,
+th,
+.wp-block-quote,
+.wp-block-pullquote,
+.wp-block-table {
+	color: #e6e8eb !important;
+}
+
+a {
+	color: #5cb8ff !important;
+}
+
+code,
+pre,
+.wp-block-code,
+.wp-block-preformatted {
+	background: #2b2f38 !important;
+	color: #e2c8a0 !important;
+}
+
+hr.wp-block-separator {
+	border-color: #3a3f4b !important;
+	color: #3a3f4b !important;
+}
+
+.wp-block-table td,
+.wp-block-table th,
+table.wp-block-table td,
+table.wp-block-table th {
+	border-color: #3a3f4b !important;
+}
+
+/* The prompts the editor shows in empty blocks and in the title */
+.block-editor-default-block-appender__content,
+.wp-block-paragraph[data-empty="true"]::before,
+.block-editor-rich-text__editable [data-rich-text-placeholder]::after,
+.editor-post-title__input::placeholder,
+.wp-block-post-title::placeholder,
+.editor-post-title.is-empty::after {
+	color: #a7adba !important;
+}
+.editor-post-title,
+.editor-post-title__input,
+.wp-block-post-title {
+	color: #e6e8eb !important;
+}

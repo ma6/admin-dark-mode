@@ -1,0 +1,870 @@
+/*
+ * Onygo Admin Dark Mode — wp-admin, the login screen and the block-editor
+ * chrome. Colours only: every declaration here touches color, background,
+ * border-color, box-shadow or outline — never layout — so the heavy use of
+ * !important (needed to override core's mature stylesheet in place) can't
+ * shift or break anything.
+ *
+ * Contrast — all sRGB, WCAG 2.1 formula, calculated not estimated:
+ *   text  #e6e8eb on canvas #1a1c1f ............. 13.9:1   (AAA)
+ *   text  #e6e8eb on surface #242730 ............ 11.2:1   (AAA)
+ *   muted #a7adba on canvas #1a1c1f .............  7.6:1   (AAA)
+ *   muted #a7adba on surface #242730 ...........  6.6:1   (AAA)
+ *   link  #5cb8ff on canvas #1a1c1f .............  7.9:1
+ *   link  #5cb8ff on field #2b2f38 .............   6.2:1
+ *   primary btn text #0a1520 on #5cb8ff ........  8.6:1
+ *   field border #727d90 vs field #2b2f38 ......  3.2:1   (SC 1.4.11)
+ *   field border #727d90 vs canvas #1a1c1f .....  4.1:1
+ *   control border #6b7688 vs canvas ...........  3.7:1
+ *   focus ring #8fd0ff vs canvas ...............  10.3:1
+ */
+
+:root {
+	--oad-canvas: #1a1c1f;        /* page / body */
+	--oad-surface: #242730;       /* raised: boxes, menu, table head, notices */
+	--oad-surface-2: #2b2f38;     /* fields, hover, popovers */
+	--oad-surface-3: #333844;     /* button hover */
+	--oad-border: #3a3f4b;        /* subtle dividers (no 3:1 requirement) */
+	--oad-border-strong: #6b7688; /* control boundaries — >=3:1 vs canvas */
+	--oad-field-border: #727d90;  /* input boundary — >=3:1 vs field AND canvas */
+	--oad-text: #e6e8eb;
+	--oad-text-muted: #a7adba;
+	--oad-link: #5cb8ff;
+	--oad-link-hover: #8fd0ff;
+	--oad-accent: #5cb8ff;
+	--oad-on-accent: #0a1520;
+	--oad-focus: #8fd0ff;
+	--oad-ok: #5ac77d;
+	--oad-warn: #e0b34d;
+	--oad-err: #f0816c;
+
+	color-scheme: dark;
+	accent-color: #5cb8ff; /* native checkbox / radio / range / progress */
+}
+
+/* ---------------------------------------------------------------- Base ---- */
+
+html.wp-toolbar,
+body.wp-admin,
+body.wp-core-ui {
+	background: var(--oad-canvas) !important;
+}
+#wpwrap,
+#wpbody,
+#wpbody-content,
+#wpcontent,
+.wrap {
+	background-color: var(--oad-canvas) !important;
+	color: var(--oad-text) !important;
+}
+
+#wpbody-content p,
+#wpbody-content li,
+#wpbody-content dd,
+#wpbody-content dt,
+#wpbody-content label,
+#wpbody-content h1,
+#wpbody-content h2,
+#wpbody-content h3,
+#wpbody-content h4,
+#wpbody-content h5,
+#wpbody-content h6,
+.wrap,
+.wrap h1,
+.wrap h2 {
+	color: var(--oad-text) !important;
+}
+p.description,
+span.description,
+.description,
+.howto,
+.row-actions,
+.subtitle,
+#wpbody-content .form-wrap p,
+.plugins .second {
+	color: var(--oad-text-muted) !important;
+}
+
+a {
+	color: var(--oad-link);
+}
+a:hover,
+a:active {
+	color: var(--oad-link-hover);
+}
+
+hr,
+.wrap hr,
+#wpbody-content .wrap .wp-header-end {
+	border-color: var(--oad-border) !important;
+}
+
+/* Focus — visible on every surface, and it survives forced-colours mode
+ * because the transparent outline stays a real outline there. */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+.wp-core-ui .button:focus,
+.wp-core-ui .button-primary:focus,
+.wp-core-ui .button-secondary:focus,
+[tabindex]:focus {
+	outline: 2px solid transparent !important;
+	outline-offset: 0;
+	box-shadow: 0 0 0 2px var(--oad-canvas), 0 0 0 4px var(--oad-focus) !important;
+}
+:focus-visible {
+	outline: 2px solid var(--oad-focus) !important;
+	outline-offset: 1px;
+}
+
+/* -------------------------------------------------------- Admin menu ---- */
+
+#adminmenuback,
+#adminmenuwrap,
+#adminmenu,
+#adminmenu .wp-submenu,
+#adminmenu li.wp-has-current-submenu .wp-submenu,
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head {
+	background-color: var(--oad-surface) !important;
+}
+#adminmenu a {
+	color: var(--oad-text) !important;
+}
+#adminmenu .wp-submenu a {
+	color: var(--oad-text-muted) !important;
+}
+#adminmenu li.menu-top:hover,
+#adminmenu li.opensub > a.menu-top,
+#adminmenu li > a.menu-top:focus,
+#adminmenu li.current a.menu-top,
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
+	background-color: var(--oad-surface-2) !important;
+	color: var(--oad-link-hover) !important;
+}
+#adminmenu .wp-submenu a:hover,
+#adminmenu .wp-submenu a:focus,
+#adminmenu .wp-submenu li.current a,
+#adminmenu li.menu-top:hover div.wp-menu-image::before,
+#adminmenu li.current div.wp-menu-image::before {
+	color: var(--oad-link-hover) !important;
+}
+#adminmenu div.wp-menu-image::before {
+	color: var(--oad-text-muted) !important;
+}
+#adminmenu li.wp-has-current-submenu::after,
+#adminmenu li.current > a.menu-top::after {
+	border-right-color: var(--oad-canvas) !important;
+}
+#adminmenu .awaiting-mod,
+#adminmenu .update-plugins,
+#wpadminbar .awaiting-mod,
+#wpadminbar .pending-count {
+	background-color: var(--oad-err) !important;
+	color: var(--oad-on-accent) !important;
+}
+#adminmenuwrap {
+	border-right: 1px solid var(--oad-border) !important;
+}
+#collapse-button {
+	color: var(--oad-text-muted) !important;
+}
+
+/* --------------------------------------------------------- Admin bar ---- */
+
+#wpadminbar {
+	background: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+}
+#wpadminbar .ab-item,
+#wpadminbar a.ab-item,
+#wpadminbar > #wp-toolbar span.ab-label,
+#wpadminbar > #wp-toolbar span.noticon,
+#wpadminbar .ab-icon::before,
+#wpadminbar .ab-item::before {
+	color: var(--oad-text) !important;
+}
+#wpadminbar .ab-top-menu > li:hover > .ab-item,
+#wpadminbar .ab-top-menu > li.hover > .ab-item,
+#wpadminbar .ab-top-menu > li > .ab-item:focus,
+#wpadminbar .menupop .ab-sub-wrapper {
+	background: var(--oad-surface-2) !important;
+	color: var(--oad-link-hover) !important;
+}
+#wpadminbar .ab-submenu .ab-item,
+#wpadminbar .quicklinks .menupop ul li a {
+	color: var(--oad-text-muted) !important;
+}
+#wpadminbar .quicklinks .menupop ul li a:hover,
+#wpadminbar .quicklinks .menupop ul li a:focus {
+	color: var(--oad-link-hover) !important;
+}
+
+/* --------------------------------------------- Boxes / cards / panels ---- */
+
+.postbox,
+.stuffbox,
+.card,
+.welcome-panel,
+.welcome-panel-column-container,
+#dashboard-widgets .postbox,
+.postbox-header,
+.meta-box-sortables .postbox,
+.accordion-section-content,
+.accordion-section-title,
+.widgets-holder-wrap,
+.widget .widget-top,
+.wp-editor-container,
+#poststuff .postarea,
+.inside {
+	background-color: var(--oad-surface) !important;
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text) !important;
+}
+.postbox-header,
+.postbox .hndle,
+.postbox h2,
+.postbox h3,
+.widget .widget-top {
+	color: var(--oad-text) !important;
+	border-bottom: 1px solid var(--oad-border) !important;
+}
+.postbox .handlediv,
+.postbox .toggle-indicator::before,
+.handlediv .toggle-indicator::before,
+.widget-action .toggle-indicator::before {
+	color: var(--oad-text-muted) !important;
+}
+
+/* Dashboard widgets — the striped Activity / Recent Comments lists and the
+ * Welcome panel columns each carry their own near-white background. */
+#dashboard-widgets .welcome-panel-column-container,
+#dashboard-widgets #the-comment-list .comment-item,
+#dashboard-widgets #the-comment-list li,
+#dashboard-widgets #published-posts li,
+#dashboard-widgets .activity-block li,
+#dashboard_activity .subsubsub {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+}
+#dashboard-widgets #the-comment-list .comment-item p,
+#dashboard-widgets #the-comment-list .comment-item blockquote,
+#dashboard-widgets .comment-meta,
+#dashboard-widgets #published-posts .post-date,
+#dashboard-widgets .rss-widget span.rss-date {
+	color: var(--oad-text-muted) !important;
+}
+#dashboard-widgets #the-comment-list .comment-item a,
+#dashboard-widgets #published-posts li a {
+	color: var(--oad-link) !important;
+}
+.welcome-panel .welcome-panel-column h3,
+.welcome-panel .welcome-panel-column p,
+.welcome-panel h2 {
+	color: var(--oad-text) !important;
+}
+
+/* ------------------------------------------------------------- Forms ---- */
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+textarea,
+select,
+.wp-admin input[type="text"],
+#wpbody-content input[type="text"],
+#wpbody-content textarea,
+#wpbody-content select {
+	background-color: var(--oad-surface-2) !important;
+	border: 1px solid var(--oad-field-border) !important;
+	color: var(--oad-text) !important;
+	box-shadow: none !important;
+}
+input::placeholder,
+textarea::placeholder {
+	color: #9aa2b1 !important; /* 5.2:1 on the field — treated as real text */
+	opacity: 1;
+}
+input:focus,
+textarea:focus,
+select:focus {
+	border-color: var(--oad-focus) !important;
+	box-shadow: 0 0 0 2px var(--oad-canvas), 0 0 0 4px var(--oad-focus) !important;
+}
+select {
+	/* light caret — core's is near-black and vanishes on the dark field */
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23a7adba'%3E%3Cpath d='M5 6l5 6 5-6z'/%3E%3C/svg%3E") !important;
+}
+input[type="checkbox"],
+input[type="radio"] {
+	background: var(--oad-surface-2) !important;
+	border: 1px solid var(--oad-border-strong) !important;
+}
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+	background: var(--oad-accent) !important;
+	border-color: var(--oad-accent) !important;
+}
+input[type="checkbox"]:checked::before {
+	color: var(--oad-on-accent) !important;
+}
+input[type="radio"]:checked::before {
+	background: var(--oad-on-accent) !important;
+}
+input[disabled],
+input:disabled,
+textarea:disabled,
+select:disabled,
+.wp-core-ui .button.disabled,
+.wp-core-ui .button:disabled,
+.wp-core-ui .button-primary.disabled {
+	color: var(--oad-text-muted) !important;
+	background-color: var(--oad-surface) !important;
+	border-color: var(--oad-border) !important;
+	text-shadow: none !important;
+}
+
+/* Generic settings markup — the shape most third-party option pages use
+ * (WP Super Cache, W3TC, WPForms, Yoast … all lean on fieldset / legend /
+ * plain tables rather than core's own classes). */
+#wpbody-content .form-table th,
+#wpbody-content .form-table td,
+#wpbody-content fieldset,
+#wpbody-content legend,
+#wpbody-content .wrap dl,
+#wpbody-content .wrap dt,
+#wpbody-content .wrap dd,
+#wpbody-content .wrap > table td,
+#wpbody-content .wrap > table th,
+#wpbody-content .wrap form table td,
+#wpbody-content .wrap form table th {
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+#wpbody-content fieldset,
+#wpbody-content .wrap > table,
+#wpbody-content .wrap form > table {
+	background-color: transparent !important;
+}
+#wpbody-content .wrap pre,
+#wpbody-content .wrap .notice pre,
+#wpbody-content .wrap textarea[readonly] {
+	background-color: var(--oad-surface-2) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+
+/* ----------------------------------------------------------- Buttons ---- */
+
+.wp-core-ui .button,
+.wp-core-ui .button-secondary,
+#wpbody-content input[type="submit"]:not([class]),
+#wpbody-content input[type="button"]:not([class]),
+#wpbody-content input[type="reset"]:not([class]) {
+	background: var(--oad-surface-2) !important;
+	border-color: var(--oad-border-strong) !important;
+	color: var(--oad-text) !important;
+	text-shadow: none !important;
+}
+.wp-core-ui .button:hover,
+.wp-core-ui .button-secondary:hover {
+	background: var(--oad-surface-3) !important;
+	border-color: var(--oad-focus) !important;
+	color: var(--oad-text) !important;
+}
+.wp-core-ui .button-primary,
+.wp-core-ui input[type="submit"].button-primary {
+	background: var(--oad-accent) !important;
+	border-color: var(--oad-accent) !important;
+	color: var(--oad-on-accent) !important;
+	text-shadow: none !important;
+}
+.wp-core-ui .button-primary:hover,
+.wp-core-ui .button-primary:focus {
+	background: var(--oad-link-hover) !important;
+	border-color: var(--oad-link-hover) !important;
+	color: var(--oad-on-accent) !important;
+}
+.wp-core-ui .button-link {
+	color: var(--oad-link) !important;
+	background: transparent !important;
+}
+.wp-core-ui .button-link-delete,
+.submitdelete,
+a.submitdelete {
+	color: var(--oad-err) !important;
+}
+.page-title-action,
+.wrap .page-title-action {
+	background: var(--oad-surface-2) !important;
+	border-color: var(--oad-border-strong) !important;
+	color: var(--oad-text) !important;
+}
+
+/* -------------------------------------------------------- List tables ---- */
+
+.wp-list-table,
+.widefat,
+.wp-list-table thead th,
+.wp-list-table tfoot th,
+.widefat thead th,
+.widefat tfoot th,
+.wp-list-table .manage-column {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+.wp-list-table tbody td,
+.wp-list-table tbody th,
+.widefat tbody td,
+.widefat tbody th {
+	background-color: var(--oad-canvas) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+.wp-list-table.striped > tbody > :nth-child(odd),
+.striped > tbody > :nth-child(odd),
+ul.striped > :nth-child(odd),
+.alternate {
+	background-color: var(--oad-surface) !important;
+}
+.wp-list-table tbody tr:hover > th,
+.wp-list-table tbody tr:hover > td {
+	background-color: var(--oad-surface-2) !important;
+}
+.wp-list-table a,
+.wp-list-table .row-actions a,
+.subsubsub a,
+.tablenav a {
+	color: var(--oad-link) !important;
+}
+.wp-list-table .row-actions,
+.subsubsub,
+.subsubsub li,
+.displaying-num,
+.tablenav-paging-text {
+	color: var(--oad-text-muted) !important;
+}
+.tablenav .tablenav-pages a,
+.tablenav .tablenav-pages span.tablenav-pages-navspan {
+	background: var(--oad-surface-2) !important;
+	border-color: var(--oad-border-strong) !important;
+	color: var(--oad-text) !important;
+}
+.view-switch a.current::before {
+	color: var(--oad-link) !important;
+}
+
+/* ---------------------------------------------------- Plugins screen ---- */
+
+.plugins tr,
+.plugins td,
+.plugins th,
+.plugins .active td,
+.plugins .active th,
+.plugins .inactive td,
+.plugins .inactive th,
+.plugins .plugin-title strong,
+.plugins .plugin-description,
+.plugins .plugin-description p {
+	background-color: var(--oad-canvas) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+.plugins .inactive .plugin-title strong,
+.plugins .plugin-description p,
+.plugins .row-actions {
+	color: var(--oad-text-muted) !important;
+}
+.plugin-update-tr .update-message,
+.plugin-update-tr .notice-warning,
+.plugins .update td {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+}
+
+/* ----------------------------- Named third-party option pages ---------- */
+/* Some popular plugins ship a fully custom, self-backgrounded settings UI
+ * that the generic rules above cannot reach. The big ones are cheap to name
+ * explicitly. */
+
+/* WP Super Cache (3.x) */
+.wpsc-body,
+.wpsc-body-content,
+.wpsc-card,
+.wpsc-nav-container,
+.wpsc-boost-banner,
+.wpsc-boost-banner-inner,
+.wpsc-settings-inner {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+.wpsc-body,
+.wpsc-card,
+.wpsc-card p,
+.wpsc-card li,
+.wpsc-card label,
+.wpsc-card td,
+.wpsc-card th,
+.wpsc-settings-table td,
+.wpsc-settings-table th,
+.wpsc-name {
+	color: var(--oad-text) !important;
+}
+.wpsc-nav-tab {
+	color: var(--oad-text-muted) !important;
+}
+.wpsc-nav-tab-selected,
+.wpsc-nav-tab:hover {
+	color: var(--oad-text) !important;
+}
+.wpsc-card a,
+.wpsc-body a {
+	color: var(--oad-link) !important;
+}
+
+/* W3 Total Cache */
+#w3tc,
+#w3tc .metabox-holder .postbox,
+#w3tc-dashboard,
+.w3tc-gopro-notification {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+#w3tc p,
+#w3tc li,
+#w3tc label,
+#w3tc td,
+#w3tc th {
+	color: var(--oad-text) !important;
+}
+
+/* ----------------------------------------------------------- Notices ---- */
+
+.notice,
+div.updated,
+div.error,
+.update-nag,
+.notice-info,
+.notice-success,
+.notice-warning,
+.notice-error,
+.settings-error,
+#message,
+.wrap .notice {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+.notice p,
+.notice li,
+div.updated p,
+div.error p,
+.settings-error p {
+	color: var(--oad-text) !important;
+}
+.notice a {
+	color: var(--oad-link) !important;
+}
+.notice-success,
+div.updated {
+	border-left-color: var(--oad-ok) !important;
+}
+.notice-warning,
+.update-nag {
+	border-left-color: var(--oad-warn) !important;
+}
+.notice-error,
+div.error {
+	border-left-color: var(--oad-err) !important;
+}
+.notice-info {
+	border-left-color: var(--oad-accent) !important;
+}
+.notice-dismiss::before {
+	color: var(--oad-text-muted) !important;
+}
+.notice-dismiss:hover::before,
+.notice-dismiss:focus::before {
+	color: var(--oad-link-hover) !important;
+}
+
+/* -------------------------------------------------------------- Tabs ---- */
+
+.nav-tab-wrapper,
+.wp-filter,
+h2.nav-tab-wrapper,
+h3.nav-tab-wrapper {
+	border-bottom-color: var(--oad-border) !important;
+}
+.nav-tab {
+	background: var(--oad-surface) !important;
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text-muted) !important;
+}
+.nav-tab:hover,
+.nav-tab:focus {
+	background: var(--oad-surface-2) !important;
+	color: var(--oad-text) !important;
+}
+.nav-tab-active,
+.nav-tab-active:hover,
+.nav-tab-active:focus {
+	background: var(--oad-canvas) !important;
+	border-bottom-color: var(--oad-canvas) !important;
+	color: var(--oad-text) !important;
+}
+.wp-filter .filter-links a {
+	color: var(--oad-link) !important;
+}
+.wp-filter .filter-links .current {
+	color: var(--oad-text) !important;
+	border-bottom-color: var(--oad-accent) !important;
+}
+
+/* ------------------------------------------ Screen options / help tab ---- */
+
+#screen-meta,
+#screen-meta-links .screen-meta-toggle button,
+#contextual-help-wrap,
+#contextual-help-back,
+.contextual-help-tabs .active,
+#screenoptionnav,
+#screen-options-wrap,
+#contextual-help-columns {
+	background-color: var(--oad-surface) !important;
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text) !important;
+}
+#screen-meta-links .show-settings,
+.metabox-prefs label,
+.screen-options label,
+#adv-settings label {
+	color: var(--oad-text) !important;
+}
+
+/* --------------------------------------------------- Media modal (r/o) --- */
+
+.media-modal,
+.media-frame-content,
+.media-frame-menu,
+.media-frame-router,
+.media-frame-toolbar,
+.media-sidebar,
+.media-menu,
+.media-router,
+.attachments-browser .media-toolbar {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+.media-modal-close .media-modal-icon::before,
+.media-menu .media-menu-item,
+.media-router .media-menu-item {
+	color: var(--oad-text-muted) !important;
+}
+.media-menu .media-menu-item.active,
+.media-router .media-menu-item.active,
+.media-frame-menu .media-menu-item:hover {
+	color: var(--oad-text) !important;
+	background: var(--oad-surface-2) !important;
+}
+.media-sidebar .setting label,
+.media-sidebar .setting span,
+.attachment-details label {
+	color: var(--oad-text) !important;
+}
+.media-modal-backdrop,
+.ui-widget-overlay {
+	background: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* -------------------------------------------------------------- Code ---- */
+
+code,
+kbd,
+pre,
+tt,
+.code {
+	background-color: var(--oad-surface-2) !important;
+	color: #e2c8a0 !important; /* 8.3:1 on the field */
+	border-color: var(--oad-border) !important;
+}
+
+/* -------------------------------------------------- Block-editor chrome -- */
+/* Outer document only — the iframed canvas is styled by
+ * assets/editor-canvas-dark.css. Gutenberg class names shift between
+ * releases, so this section is best-effort by nature. */
+
+.interface-interface-skeleton,
+.interface-interface-skeleton__header,
+.interface-interface-skeleton__body,
+.interface-interface-skeleton__content,
+.interface-interface-skeleton__sidebar,
+.interface-interface-skeleton__secondary-sidebar,
+.interface-interface-skeleton__footer,
+.edit-post-header,
+.editor-header,
+.edit-post-sidebar,
+.editor-sidebar,
+.interface-complementary-area,
+.components-panel,
+.components-panel__body,
+.components-panel__header,
+.edit-post-meta-boxes-area,
+.block-editor-block-list__breadcrumb,
+.block-editor-block-breadcrumb,
+.editor-document-tools,
+.block-editor-list-view-leaf,
+.editor-list-view-sidebar,
+.editor-layout__toggle-publish-panel,
+.editor-post-publish-panel {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+/* Canvas frame around the iframe (core paints it #ddd) */
+.editor-visual-editor,
+.edit-post-visual-editor,
+.editor-styles-wrapper {
+	background-color: var(--oad-canvas) !important;
+}
+/* The document title pill in the top bar (core paints it #f0f0f1) */
+.editor-document-bar,
+.editor-document-bar__command,
+.editor-document-bar__title {
+	background-color: var(--oad-surface-2) !important;
+	color: var(--oad-text) !important;
+}
+.components-panel__body-title,
+.components-panel__body-toggle,
+.block-editor-block-card__title,
+.components-base-control__label,
+.editor-post-panel__section,
+.components-panel__body h2,
+.block-editor-block-inspector h2,
+.editor-sidebar__panel-tab,
+.components-tab-panel__tabs-item,
+.editor-post-panel__row-label {
+	color: var(--oad-text) !important;
+}
+.components-button.is-secondary,
+.editor-post-featured-image__toggle,
+.editor-post-format__suggestion .components-button {
+	background: var(--oad-surface-2) !important;
+	color: var(--oad-text) !important;
+	box-shadow: inset 0 0 0 1px var(--oad-border-strong) !important;
+}
+.components-button.is-primary {
+	background: var(--oad-accent) !important;
+	color: var(--oad-on-accent) !important;
+}
+.components-button.is-tertiary,
+.components-button.is-link,
+.components-button.has-text:not(.is-primary):not(.is-secondary) {
+	color: var(--oad-link) !important;
+}
+.components-input-control__input,
+.components-input-control__container,
+.components-text-control__input,
+.components-textarea-control__input,
+.components-select-control__input,
+.block-editor-plain-text {
+	background: var(--oad-surface-2) !important;
+	color: var(--oad-text) !important;
+	box-shadow: inset 0 0 0 1px var(--oad-field-border) !important;
+}
+.components-form-toggle .components-form-toggle__track {
+	background-color: var(--oad-surface-2) !important;
+	border: 1px solid var(--oad-border-strong) !important;
+}
+.components-form-toggle.is-checked .components-form-toggle__track {
+	background-color: var(--oad-accent) !important;
+	border-color: var(--oad-accent) !important;
+}
+.components-form-toggle .components-form-toggle__thumb {
+	background-color: var(--oad-text) !important;
+}
+.components-popover__content,
+.components-dropdown-menu__menu,
+.components-menu-group,
+.components-menu-item__button {
+	background: var(--oad-surface-2) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+
+/* ----------------------------------------------------------- Scrollbar -- */
+
+* {
+	scrollbar-color: var(--oad-border-strong) var(--oad-canvas);
+}
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+::-webkit-scrollbar-track {
+	background: var(--oad-canvas);
+}
+::-webkit-scrollbar-thumb {
+	background: var(--oad-border-strong);
+	border-radius: 6px;
+}
+
+/* --------------------------------------------------------- Login screen -- */
+
+body.login {
+	background: var(--oad-canvas) !important;
+}
+.login form {
+	background: var(--oad-surface) !important;
+	border: 1px solid var(--oad-border) !important;
+	box-shadow: none !important;
+}
+.login label,
+.login form .input,
+.login .password-input-wrapper input {
+	color: var(--oad-text) !important;
+}
+.login form .input,
+.login input[type="text"],
+.login input[type="password"],
+.login input[type="email"] {
+	background: var(--oad-surface-2) !important;
+	border-color: var(--oad-field-border) !important;
+	color: var(--oad-text) !important;
+}
+.login #nav a,
+.login #backtoblog a {
+	color: var(--oad-link) !important;
+}
+.login #nav a:hover,
+.login #backtoblog a:hover {
+	color: var(--oad-link-hover) !important;
+}
+.login .button.wp-hide-pw .dashicons {
+	color: var(--oad-text-muted) !important;
+}
+.login .message,
+.login .success {
+	background: var(--oad-surface) !important;
+	border-left-color: var(--oad-accent) !important;
+	color: var(--oad-text) !important;
+}
+.login #login_error {
+	background: var(--oad-surface) !important;
+	border-left-color: var(--oad-err) !important;
+	color: var(--oad-text) !important;
+}
