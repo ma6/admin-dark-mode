@@ -3,7 +3,7 @@ Contributors: martingude
 Tested up to: 6.7
 Requires at least: 6.3
 Requires PHP: 7.4
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,10 @@ fields, borders and focus rings invisible. This one does neither.
 3. Pick a scheme from the toolbar or your profile. New users start on Auto.
 
 == Changelog ==
+
+= 0.1.2 =
+* Dark "Add Plugins" screen (plugin-install.php) — cards, filter bar and the
+  popular-tags cloud.
 
 = 0.1.1 =
 * Named dark coverage for Really Simple Security, BackWPup and Autoptimize.

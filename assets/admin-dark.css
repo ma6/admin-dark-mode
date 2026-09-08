@@ -493,6 +493,44 @@ ul.striped > :nth-child(odd),
 	color: var(--oad-text) !important;
 }
 
+/* Add Plugins screen (plugin-install.php) — core, card layout */
+.wp-filter,
+.plugin-install-php .wp-filter,
+.plugins-popular-tags-wrapper,
+.popular-tags,
+p.popular-tags,
+.plugin-card,
+.plugin-card-top,
+.plugin-card-bottom {
+	background-color: var(--oad-surface) !important;
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text) !important;
+}
+.plugin-card-bottom {
+	border-top: 1px solid var(--oad-border) !important;
+}
+.plugin-card .name,
+.plugin-card .name a,
+.plugin-card h3,
+.plugin-card .desc,
+.plugin-card .desc p,
+.plugin-card .plugin-author,
+.plugin-card .column-updated,
+.plugin-card .column-downloaded,
+.plugin-card .column-compatibility,
+.plugin-card .compatibility-compatible,
+.plugin-install-php .wp-filter .filter-links a {
+	color: var(--oad-text) !important;
+}
+.plugin-card .plugin-author,
+.plugin-card .column-updated,
+.plugin-card .num-ratings {
+	color: var(--oad-text-muted) !important;
+}
+.plugin-card .plugin-icon {
+	background-color: transparent !important;
+}
+
 /* ----------------------------- Named third-party option pages ---------- */
 /* Some popular plugins ship a fully custom, self-backgrounded settings UI
  * that the generic rules above cannot reach. The big ones are cheap to name

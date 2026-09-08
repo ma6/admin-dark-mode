@@ -3,7 +3,7 @@
  * Plugin Name:       Onygo Admin Dark Mode
  * Plugin URI:        https://github.com/ma6/onygo.26
  * Description:       An accessible dark colour scheme for wp-admin, the login screen and the block editor. Colours only — no layout changes, no options page. Per-user Auto / Light / Dark, switchable from the toolbar and your profile. Every text/background pair meets WCAG 2.2 AA; control borders meet SC 1.4.11.
- * Version:           0.1.1
+ * Version:           0.1.2
  * Requires at least: 6.3
  * Requires PHP:      7.4
  * Author:            Martin Gude
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'OAD_VERSION', '0.1.1' );
+define( 'OAD_VERSION', '0.1.2' );
 define( 'OAD_FILE', __FILE__ );
 
 /**
