@@ -3,7 +3,7 @@ Contributors: martingude
 Tested up to: 6.7
 Requires at least: 6.3
 Requires PHP: 7.4
-Stable tag: 0.1.2
+Stable tag: 0.1.3
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,14 @@ fields, borders and focus rings invisible. This one does neither.
 3. Pick a scheme from the toolbar or your profile. New users start on Auto.
 
 == Changelog ==
+
+= 0.1.3 =
+* Dark core screens the earlier passes missed: Site Health, Themes, the
+  category checklist + publish box (classic editor, Links), and the media
+  modal's attachment-details sidebar.
+* Named coverage for the Really Simple Security Settings tab (incl. its
+  Material-UI inputs and the pro-lock overlay) and WPS Limit Login.
+* Generic Material-UI input styling for any MUI-based plugin.
 
 = 0.1.2 =
 * Dark "Add Plugins" screen (plugin-install.php) — cards, filter bar and the

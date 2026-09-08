@@ -619,6 +619,12 @@ p.popular-tags,
 .rsssl-header .rsssl-menu-item {
 	color: var(--oad-text) !important;
 }
+.rsssl-settings,
+.rsssl-main,
+.rsssl-field,
+.rsssl-grid-item-content,
+.rsssl-grid-item-footer,
+.rsssl-settings-block,
 .rsssl-ssl-labs-select,
 .rsssl-ssl-labs-select-item,
 .rsssl-ssl-labs-list-item,
@@ -626,6 +632,7 @@ p.popular-tags,
 .rsssl-hardening-select,
 .rsssl-hardening-select-item,
 .rsssl-hardening-list-item,
+.rsssl-wizard-help-notice,
 [class*="rsssl-"][class*="list-item"],
 [class*="rsssl-"][class*="-select"] {
 	background-color: var(--oad-surface-2) !important;
@@ -635,8 +642,70 @@ p.popular-tags,
 .rsssl-error {
 	background-color: var(--oad-surface) !important;
 }
+.rsssl-menu-item.rsssl-active {
+	background-color: var(--oad-surface-2) !important;
+	color: var(--oad-text) !important;
+}
+.rsssl-menu-item {
+	color: var(--oad-text) !important;
+}
 .rsssl-header a,
-.rsssl-grid-item a {
+.rsssl-grid-item a,
+.rsssl-menu a {
+	color: var(--oad-link) !important;
+}
+/* The pro-locked overlay is a translucent-white veil over greyed sections;
+ * make it a dark veil so the section reads as dimmed, not washed out. */
+.rsssl-locked,
+.rsssl-locked-premium,
+.rsssl-locked-overlay {
+	background-color: rgba(26, 28, 31, 0.72) !important;
+}
+
+/* Material UI inputs (Really Simple Security and other MUI-based plugins) */
+.MuiInputBase-root,
+.MuiOutlinedInput-root,
+.MuiInputBase-input,
+.MuiOutlinedInput-input,
+.MuiAutocomplete-inputRoot {
+	background-color: var(--oad-surface-2) !important;
+	color: var(--oad-text) !important;
+}
+.MuiInputBase-input,
+.MuiOutlinedInput-input {
+	color: var(--oad-text) !important;
+}
+.MuiFormLabel-root,
+.MuiInputLabel-root {
+	color: var(--oad-text-muted) !important;
+}
+.MuiOutlinedInput-notchedOutline {
+	border-color: var(--oad-field-border) !important;
+}
+.MuiSvgIcon-root {
+	color: var(--oad-text-muted) !important;
+}
+
+/* WPS Limit Login (WPServeur) */
+.wps-wrap,
+.wps-content,
+.wps-content-tab,
+.wps-limit-login-wrap,
+.wps-limit-page {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+.wps-content-tab label,
+.wps-content-tab p,
+.wps-content-tab li,
+.wps-content-tab td,
+.wps-content-tab th {
+	color: var(--oad-text) !important;
+}
+.wps-tab a,
+.wps-nav a,
+.wps-content-tab a {
 	color: var(--oad-link) !important;
 }
 
@@ -756,6 +825,103 @@ h3.nav-tab-wrapper {
 	border-bottom-color: var(--oad-accent) !important;
 }
 
+/* ---------------------------------- Category checklists + publish box --- */
+
+.categorydiv .tabs-panel,
+.customlinkdiv .tabs-panel,
+.tagsdiv .tabs-panel,
+ul.category-tabs li.tabs,
+ul.add-menu-item-tabs li.tabs,
+.wp-tab-panel,
+.list-wrap,
+.categorychecklist,
+#category-adder {
+	background-color: var(--oad-surface-2) !important;
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text) !important;
+}
+.categorychecklist label,
+.categorychecklist li,
+.tabs-panel label {
+	color: var(--oad-text) !important;
+}
+ul.category-tabs li:not(.tabs) a,
+.category-tabs a {
+	color: var(--oad-link) !important;
+}
+
+#submitdiv .inside,
+#submitpost,
+#minor-publishing,
+#major-publishing-actions,
+#misc-publishing-actions,
+.submitbox,
+.submitbox .submit,
+#delete-action,
+#publishing-action {
+	background-color: var(--oad-surface) !important;
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text) !important;
+}
+#misc-publishing-actions .misc-pub-section {
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text) !important;
+}
+
+/* --------------------------------------------------------- Site Health --- */
+
+.health-check-header,
+.health-check-body,
+.health-check-accordion,
+.health-check-accordion-trigger,
+.health-check-accordion-panel,
+.site-health-progress-wrapper,
+.site-status-all-clear,
+.tools-divider {
+	background-color: var(--oad-surface) !important;
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text) !important;
+}
+.health-check-accordion-trigger:hover,
+.health-check-accordion-trigger[aria-expanded="true"] {
+	background-color: var(--oad-surface-2) !important;
+}
+.health-check-accordion-heading {
+	border-color: var(--oad-border) !important;
+}
+.health-check-body .badge,
+.health-check-accordion .badge,
+.site-health-issues-wrapper .badge {
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border-strong) !important;
+}
+
+/* ------------------------------------------------------------- Themes --- */
+
+.theme-browser .theme,
+.theme-browser .theme.active,
+.theme-browser .theme .theme-name,
+.theme-browser .theme .theme-actions,
+.theme-browser .theme .theme-screenshot.blank,
+.theme-overlay .theme-about,
+.theme-overlay .theme-header,
+.theme-overlay .theme-actions,
+.theme-install-overlay .wp-full-overlay-header {
+	background-color: var(--oad-surface) !important;
+	border-color: var(--oad-border) !important;
+	color: var(--oad-text) !important;
+}
+.theme-browser .theme .theme-name,
+.theme-overlay .theme-name,
+.theme-overlay .theme-author,
+.theme-overlay .theme-description {
+	color: var(--oad-text) !important;
+}
+.theme-browser .theme:hover .theme-actions,
+.theme-browser .theme:focus .theme-actions {
+	background-color: var(--oad-surface-2) !important;
+}
+
 /* ------------------------------------------ Screen options / help tab ---- */
 
 #screen-meta,
@@ -783,14 +949,32 @@ h3.nav-tab-wrapper {
 .media-frame-content,
 .media-frame-menu,
 .media-frame-router,
+.media-frame-title,
 .media-frame-toolbar,
 .media-sidebar,
 .media-menu,
 .media-router,
-.attachments-browser .media-toolbar {
+.attachment-details,
+.attachment-info,
+.attachment-details .setting,
+.attachment-details .attachment-info,
+.compat-item,
+.media-frame .attachments-browser .media-toolbar,
+.attachments-browser .media-toolbar,
+.media-frame.mode-grid .attachments-browser .media-toolbar,
+.edit-attachment-frame .details-image {
 	background-color: var(--oad-surface) !important;
 	color: var(--oad-text) !important;
 	border-color: var(--oad-border) !important;
+}
+.media-frame-title h1,
+.attachment-details h2,
+.attachment-info .filename,
+.attachment-info .uploaded,
+.attachment-info .file-size,
+.attachment-details label,
+.attachment-compat label {
+	color: var(--oad-text) !important;
 }
 .media-modal-close .media-modal-icon::before,
 .media-menu .media-menu-item,
