@@ -1355,8 +1355,23 @@ tt,
 	border-color: var(--oad-border) !important;
 }
 .block-editor-inserter__quick-inserter-expand,
-.block-editor-tabbed-sidebar__tab {
+.block-editor-tabbed-sidebar__tab,
+.block-editor-inserter__panel-title,
+.block-editor-block-types-list__item,
+.block-editor-block-types-list__item .block-editor-block-icon,
+.block-editor-block-types-list__item-title,
+.block-editor-inserter__preview .block-editor-block-icon,
+.block-editor-inserter-list-item__title,
+.block-editor-block-card__title,
+.editor-block-list-item-paragraph .block-editor-block-icon {
 	color: var(--oad-text) !important;
+	fill: currentColor !important;
+}
+.block-editor-block-types-list__item:hover,
+.block-editor-block-types-list__item:focus,
+.block-editor-inserter-list-item__item:hover {
+	color: var(--oad-link) !important;
+	background-color: var(--oad-surface-3) !important;
 }
 .components-notice,
 .components-notice-list .components-notice,
