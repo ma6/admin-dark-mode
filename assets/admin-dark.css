@@ -551,6 +551,90 @@ ul.striped > :nth-child(odd),
 	color: var(--oad-text) !important;
 }
 
+/* Really Simple Security (9.x, React UI) */
+.rsssl-wrapper,
+.rsssl-header,
+.rsssl-header-container,
+.rsssl-content,
+.rsssl-grid-item,
+.rsssl-progress,
+.rsssl-modal-content,
+.rsssl-modal-header,
+.rsssl-modal-body,
+.rsssl-modal-footer,
+.rsssl-drawer {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+.rsssl-grid-item p,
+.rsssl-grid-item li,
+.rsssl-grid-item label,
+.rsssl-grid-item h1,
+.rsssl-grid-item h2,
+.rsssl-grid-item h3,
+.rsssl-grid-item h4,
+.rsssl-grid-item td,
+.rsssl-grid-item th,
+.rsssl-grid-item-content,
+.rsssl-progress-text,
+.rsssl-header .rsssl-menu-item {
+	color: var(--oad-text) !important;
+}
+.rsssl-ssl-labs-select,
+.rsssl-ssl-labs-select-item,
+.rsssl-ssl-labs-list-item,
+.rsssl-score-snippet,
+.rsssl-hardening-select,
+.rsssl-hardening-select-item,
+.rsssl-hardening-list-item,
+[class*="rsssl-"][class*="list-item"],
+[class*="rsssl-"][class*="-select"] {
+	background-color: var(--oad-surface-2) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+.rsssl-error {
+	background-color: var(--oad-surface) !important;
+}
+.rsssl-header a,
+.rsssl-grid-item a {
+	color: var(--oad-link) !important;
+}
+
+/* Autoptimize — mostly core markup; just its slider tip cards + promo. */
+.autoptimize_banner,
+.unslider-wrap li,
+li.itemDetail {
+	background-color: var(--oad-surface) !important;
+	color: var(--oad-text) !important;
+	border-color: var(--oad-border) !important;
+}
+
+/* Tailwind-based admin UIs (BackWPup 5.x and others) — a heuristic net,
+ * scoped to admin content. It recolours utility-class backgrounds/text so
+ * these dashboards go dark; a plugin relying on `.bg-white` for something
+ * that must stay white (rare) would be caught too. */
+#wpbody-content .bg-white,
+#wpbody-content [class*="bg-grey-"],
+#wpbody-content [class*="bg-gray-"],
+#wpbody-content .bwu-onboarding,
+#wpbody-content .bwpup-modal {
+	background-color: var(--oad-surface) !important;
+	border-color: var(--oad-border) !important;
+}
+#wpbody-content [class*="text-grey-"],
+#wpbody-content [class*="text-gray-"],
+#wpbody-content .text-primary,
+#wpbody-content .text-title,
+#wpbody-content .text-body {
+	color: var(--oad-text) !important;
+}
+#wpbody-content [class*="border-grey-"],
+#wpbody-content [class*="border-gray-"] {
+	border-color: var(--oad-border) !important;
+}
+
 /* ----------------------------------------------------------- Notices ---- */
 
 .notice,
@@ -800,10 +884,26 @@ tt,
 .components-popover__content,
 .components-dropdown-menu__menu,
 .components-menu-group,
-.components-menu-item__button {
+.components-menu-item__button,
+.components-modal__frame,
+.components-modal__content,
+.components-modal__header,
+.components-guide__container,
+.components-guide__page {
 	background: var(--oad-surface-2) !important;
 	color: var(--oad-text) !important;
 	border-color: var(--oad-border) !important;
+}
+.components-modal__header-heading,
+.components-modal__content h1,
+.components-modal__content h2,
+.components-modal__content p,
+.components-modal__content li,
+.components-modal__content label {
+	color: var(--oad-text) !important;
+}
+.components-modal__screen-overlay {
+	background-color: rgba(0, 0, 0, 0.7) !important;
 }
 
 /* ----------------------------------------------------------- Scrollbar -- */

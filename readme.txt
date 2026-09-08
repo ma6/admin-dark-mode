@@ -3,7 +3,7 @@ Contributors: martingude
 Tested up to: 6.7
 Requires at least: 6.3
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,9 +28,12 @@ fields, borders and focus rings invisible. This one does neither.
   Focus is a 2px ring with a 2px offset that also survives forced-colours
   mode. Never colour alone.
 * **Covers third-party settings pages.** Core screens, the block editor
-  (chrome and canvas), the login screen, and the generic
-  `fieldset` / `legend` / plain-table markup that plugins like WP Super
-  Cache, W3 Total Cache and WPForms use for their option pages.
+  (chrome and canvas), the login screen, the generic `fieldset` / `legend`
+  / plain-table markup most option pages use, the `@wordpress/components`
+  modal/popover UI that modern plugins render into, plus named coverage for
+  WP Super Cache, W3 Total Cache, Really Simple Security, BackWPup and
+  Autoptimize. Tailwind-style admin UIs (`.bg-white` / `.bg-grey-*`) get a
+  heuristic pass.
 
 == Palette (calculated, sRGB, WCAG 2.1) ==
 
@@ -46,8 +49,13 @@ fields, borders and focus rings invisible. This one does neither.
 
 * A plugin that ships its own high-specificity `background:#fff` in an
   enqueued stylesheet, or inline `style=""`, can still show a light patch.
-  The common option-page markup is covered; arbitrarily styled ones may not
-  be fully.
+  The common option-page markup and the popular plugins above are covered;
+  another plugin with a fully custom React/Tailwind UI may need ~10 lines
+  added to the "named third-party option pages" block in admin-dark.css.
+* The Tailwind heuristic recolours anything using `.bg-white` /
+  `.bg-grey-*` inside the admin content — intended for plugin dashboards,
+  but it would also catch a plugin using `.bg-white` for something that
+  must stay white (rare).
 * Block-editor chrome uses Gutenberg class names that change between
   releases — that section is best-effort and may need a refresh after a
   major WordPress update.
@@ -64,6 +72,14 @@ fields, borders and focus rings invisible. This one does neither.
 3. Pick a scheme from the toolbar or your profile. New users start on Auto.
 
 == Changelog ==
+
+= 0.1.1 =
+* Named dark coverage for Really Simple Security, BackWPup and Autoptimize.
+* Dark `@wordpress/components` modals / guides (used by many modern plugins).
+* Heuristic pass for Tailwind-style admin UIs (`.bg-white` / `.bg-grey-*`).
+* Fixed white patches in the Dashboard Activity / Welcome widgets and
+  several block-editor chrome elements (document bar, canvas frame,
+  featured-image button, form toggles).
 
 = 0.1.0 =
 * Initial release.
