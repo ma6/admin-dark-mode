@@ -1,8 +1,8 @@
-# AGENTS.md — Onygo Admin Dark Mode
+# AGENTS.md — Admin Dark Mode
 
 A standalone WordPress plugin — its own repository since 2026-09-10, extracted
 from the `onygo.26` monorepo (`plugins/onygo-admin-dark/`) with its history
-intact. **No dependency on the Onygo theme or on Neon** — keep it that way.
+intact. **No dependency on any theme or on Neon** — keep it that way.
 
 ## Workflow
 
@@ -18,7 +18,7 @@ intact. **No dependency on the Onygo theme or on Neon** — keep it that way.
 - **Commit trailer.** End every commit message with
   `Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>`.
 - **Version bump in the same commit.** When a change ships, bump `OAD_VERSION`
-  (in `onygo-admin-dark.php`), the plugin header `Version:`, and `readme.txt`
+  (in `admin-dark-mode.php`), the plugin header `Version:`, and `readme.txt`
   (`Stable tag` + a changelog entry) together.
 
 ## What it is

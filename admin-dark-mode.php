@@ -1,32 +1,36 @@
 <?php
 /**
- * Plugin Name:       Onygo Admin Dark Mode
- * Plugin URI:        https://github.com/ma6/onygo.26
+ * Plugin Name:       Admin Dark Mode
+ * Plugin URI:        https://github.com/ma6/admin-dark-mode
  * Description:       An accessible dark colour scheme for wp-admin, the login screen and the block editor. Colours only — no layout changes, no options page. Per-user Auto / Light / Dark, switchable from the toolbar and your profile. Every text/background pair meets WCAG 2.2 AA; control borders meet SC 1.4.11.
- * Version:           0.1.11
+ * Version:           0.2.0
  * Requires at least: 6.3
  * Requires PHP:      7.4
  * Author:            Martin Gude
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       onygo-admin-dark
+ * Text Domain:       admin-dark-mode
  * Update URI:        false
  *
- * Self-contained by design — no dependency on the Onygo theme or Neon, so the
- * whole `plugins/onygo-admin-dark/` folder can be lifted into its own
- * repository unchanged. wp-admin is not a Neon surface: Neon's token layer is
- * not loaded here and pulling it in would fight core's own reset. The palette
- * in assets/admin-dark.css is therefore raw hex, each value picked against a
+ * Its own repository since 2026-09-10, extracted from the `onygo.26` monorepo
+ * (`plugins/onygo-admin-dark/`) with history intact. No dependency on any theme
+ * or on Neon. wp-admin is not a Neon surface: Neon's token layer is not loaded
+ * here and pulling it in would fight core's own reset. The palette in
+ * assets/admin-dark.css is therefore raw hex, each value picked against a
  * calculated WCAG 2.2 contrast target — the figures are in readme.txt.
  *
- * @package OnygoAdminDark
+ * The internal prefix stays `oad_` / `OAD_` and the user-meta key stays
+ * `oad_scheme` (from the plugin's original name) so existing installs keep
+ * every saved preference across the rename.
+ *
+ * @package AdminDarkMode
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'OAD_VERSION', '0.1.11' );
+define( 'OAD_VERSION', '0.2.0' );
 define( 'OAD_FILE', __FILE__ );
 
 /**
@@ -137,9 +141,9 @@ function oad_toolbar( $bar ) {
 	}
 	$current = oad_pref();
 	$labels  = array(
-		'auto'  => __( 'Auto (match system)', 'onygo-admin-dark' ),
-		'light' => __( 'Light', 'onygo-admin-dark' ),
-		'dark'  => __( 'Dark', 'onygo-admin-dark' ),
+		'auto'  => __( 'Auto (match system)', 'admin-dark-mode' ),
+		'light' => __( 'Light', 'admin-dark-mode' ),
+		'dark'  => __( 'Dark', 'admin-dark-mode' ),
 	);
 
 	$bar->add_node(
@@ -148,10 +152,10 @@ function oad_toolbar( $bar ) {
 			'parent' => 'top-secondary',
 			'title'  => sprintf(
 				/* translators: %s: name of the active admin colour scheme. */
-				__( 'Appearance: %s', 'onygo-admin-dark' ),
+				__( 'Appearance: %s', 'admin-dark-mode' ),
 				$labels[ $current ]
 			),
-			'meta'   => array( 'title' => __( 'Admin colour scheme', 'onygo-admin-dark' ) ),
+			'meta'   => array( 'title' => __( 'Admin colour scheme', 'admin-dark-mode' ) ),
 		)
 	);
 
@@ -159,7 +163,7 @@ function oad_toolbar( $bar ) {
 		$title = $label;
 		if ( $key === $current ) {
 			/* translators: %s: colour scheme name. */
-			$title = sprintf( __( '%s (current)', 'onygo-admin-dark' ), $label );
+			$title = sprintf( __( '%s (current)', 'admin-dark-mode' ), $label );
 		}
 		$bar->add_node(
 			array(
@@ -207,19 +211,19 @@ function oad_profile_field( $user ) {
 	$stored  = get_user_meta( $user->ID, 'oad_scheme', true );
 	$current = in_array( $stored, oad_schemes(), true ) ? $stored : 'auto';
 	$labels  = array(
-		'auto'  => __( 'Auto — follow my operating system', 'onygo-admin-dark' ),
-		'light' => __( 'Light', 'onygo-admin-dark' ),
-		'dark'  => __( 'Dark', 'onygo-admin-dark' ),
+		'auto'  => __( 'Auto — follow my operating system', 'admin-dark-mode' ),
+		'light' => __( 'Light', 'admin-dark-mode' ),
+		'dark'  => __( 'Dark', 'admin-dark-mode' ),
 	);
 	?>
-	<h2><?php esc_html_e( 'Admin colour scheme', 'onygo-admin-dark' ); ?></h2>
+	<h2><?php esc_html_e( 'Admin colour scheme', 'admin-dark-mode' ); ?></h2>
 	<table class="form-table" role="presentation">
 		<tr>
-			<th scope="row"><?php esc_html_e( 'Colour scheme', 'onygo-admin-dark' ); ?></th>
+			<th scope="row"><?php esc_html_e( 'Colour scheme', 'admin-dark-mode' ); ?></th>
 			<td>
 				<fieldset>
 					<legend class="screen-reader-text">
-						<span><?php esc_html_e( 'Admin colour scheme', 'onygo-admin-dark' ); ?></span>
+						<span><?php esc_html_e( 'Admin colour scheme', 'admin-dark-mode' ); ?></span>
 					</legend>
 					<?php foreach ( $labels as $key => $label ) : ?>
 						<label>
@@ -229,7 +233,7 @@ function oad_profile_field( $user ) {
 						<br />
 					<?php endforeach; ?>
 					<p class="description">
-						<?php esc_html_e( 'Colours only. Nothing else about the admin changes.', 'onygo-admin-dark' ); ?>
+						<?php esc_html_e( 'Colours only. Nothing else about the admin changes.', 'admin-dark-mode' ); ?>
 					</p>
 				</fieldset>
 			</td>

@@ -1,4 +1,4 @@
-# CLAUDE.md — Onygo Admin Dark Mode
+# CLAUDE.md — Admin Dark Mode
 
 **Read [`AGENTS.md`](AGENTS.md) first. It is the canonical instruction set for
 this repository.**

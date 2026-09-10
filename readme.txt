@@ -1,9 +1,9 @@
-=== Onygo Admin Dark Mode ===
+=== Admin Dark Mode ===
 Contributors: martingude
 Tested up to: 6.7
 Requires at least: 6.3
 Requires PHP: 7.4
-Stable tag: 0.1.11
+Stable tag: 0.2.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,12 +66,19 @@ fields, borders and focus rings invisible. This one does neither.
 
 == Installation ==
 
-1. Upload the `onygo-admin-dark` folder to `wp-content/plugins/` (or install
+1. Upload the `admin-dark-mode` folder to `wp-content/plugins/` (or install
    the .zip from Plugins → Add New → Upload Plugin).
 2. Activate it.
 3. Pick a scheme from the toolbar or your profile. New users start on Auto.
 
 == Changelog ==
+
+= 0.2.0 =
+* Repackaged as its own repo: main file, text domain and plugin name drop the
+  "onygo" prefix (slug is now `admin-dark-mode`). Internal `oad_` / `OAD_`
+  prefixes and the `oad_scheme` user-meta key are unchanged, so an existing
+  install keeps every saved preference.
+* Added LICENSE (GPL-2.0), README.md and CONTRIBUTING.md.
 
 = 0.1.11 =
 * Dark the AI plugin's settings page, and generalise the @wordpress/boot
