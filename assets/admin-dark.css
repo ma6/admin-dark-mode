@@ -712,22 +712,24 @@ p.popular-tags,
 	background-color: var(--oad-surface-3) !important;
 }
 
-/* Core "Connectors" screen (WP 7.1, options-connectors.php) — a React SPA
- * whose bootstrap inlines `body.js { background:#fff }`, so the page's own
- * body class has to be overridden here. Also used by the AI Services plugin
- * and any plugin registering a connector. */
+/* `@wordpress/boot` SPA admin pages — WP 7.1's Connectors screen
+ * (options-connectors.php), the AI plugin (settings_page_ai-wp-admin), the
+ * AI Services plugin, and anything else core mounts this way. Their
+ * bootstrap inlines `body.js { background:#fff }` and hides the legacy
+ * chrome, so the body itself has to be overridden. `:has()` catches every
+ * such page (present and future) by the container they all mount into;
+ * the explicit body classes are a fallback for older engines. */
+body:has(.boot-layout-container),
 body.options-connectors-php,
-body.options-connectors-php.js,
-body.settings_page_ais_services,
-body.settings_page_ais_services.js {
+body.settings_page_ai-wp-admin,
+body.settings_page_ais_services {
 	background-color: var(--oad-canvas) !important;
 }
 .boot-layout-container,
 .boot-layout,
 .boot-layout__stage,
 .boot-notices,
-body.options-connectors-php .admin-ui-navigable-region,
-body.settings_page_ais_services .admin-ui-navigable-region,
+body:has(.boot-layout-container) .admin-ui-navigable-region,
 .connectors-page,
 .connectors-home,
 .connectors-list,
@@ -747,29 +749,57 @@ body.settings_page_ais_services .admin-ui-navigable-region,
 }
 /* The React app's regions are CSS-module classes with per-build hashes
  * (`<hash>__header`); the local suffix is stable, so match on that, scoped
- * to this page so it can't leak elsewhere. */
-body.options-connectors-php [class*="__header"],
-body.options-connectors-php [class*="__stack"],
-body.options-connectors-php [class*="__page"],
-body.options-connectors-php [class*="__stage"],
-body.settings_page_ais_services [class*="__header"],
-body.settings_page_ais_services [class*="__page"] {
+ * to these pages so it can't leak elsewhere. */
+body:has(.boot-layout-container) [class*="__header"],
+body:has(.boot-layout-container) [class*="__stack"],
+body:has(.boot-layout-container) [class*="__page"],
+body:has(.boot-layout-container) [class*="__stage"],
+body:has(.boot-layout-container) [class*="__panel"],
+body:has(.boot-layout-container) [class*="__card"],
+body:has(.boot-layout-container) [class*="__root"],
+body:has(.boot-layout-container) [class*="__notice"],
+body:has(.boot-layout-container) [class*="__box"],
+body:has(.boot-layout-container) [class*="ai-showcase-card"],
+body:has(.boot-layout-container) .dataforms-layouts-card,
+body:has(.boot-layout-container) .dataforms-layouts-card__field,
+body:has(.boot-layout-container) .dataforms-layouts-panel,
+body.settings_page_ai-wp-admin [class*="__header"],
+body.settings_page_ai-wp-admin [class*="__page"] {
 	background-color: var(--oad-surface) !important;
 	color: var(--oad-text) !important;
 	border-color: var(--oad-border) !important;
 }
+body:has(.boot-layout-container) [class*="__is-error"] {
+	border-left: 4px solid var(--oad-err) !important;
+}
+body:has(.boot-layout-container) [class*="__is-warning"] {
+	border-left: 4px solid var(--oad-warn) !important;
+}
+body:has(.boot-layout-container) [class*="__is-success"] {
+	border-left: 4px solid var(--oad-ok) !important;
+}
+body:has(.boot-layout-container) [class*="ai-showcase-card--disabled"] {
+	opacity: 0.6;
+}
 .boot-layout h1,
 .boot-layout h2,
+.boot-layout h3,
 .boot-layout p,
 .boot-layout li,
-body.options-connectors-php h1,
-body.options-connectors-php h2,
-body.options-connectors-php p,
+.boot-layout label,
+.boot-layout span,
+body:has(.boot-layout-container) h1,
+body:has(.boot-layout-container) h2,
+body:has(.boot-layout-container) p,
 .connector-item .components-text,
 .connector-item .components-truncate,
 .ais-settings label,
 .ais-settings p {
 	color: var(--oad-text) !important;
+}
+.boot-layout .components-external-link,
+.boot-layout a {
+	color: var(--oad-link) !important;
 }
 .ai-plugin-callout {
 	background-color: var(--oad-surface-2) !important;

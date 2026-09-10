@@ -3,7 +3,7 @@ Contributors: martingude
 Tested up to: 6.7
 Requires at least: 6.3
 Requires PHP: 7.4
-Stable tag: 0.1.10
+Stable tag: 0.1.11
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,12 @@ fields, borders and focus rings invisible. This one does neither.
 3. Pick a scheme from the toolbar or your profile. New users start on Auto.
 
 == Changelog ==
+
+= 0.1.11 =
+* Dark the AI plugin's settings page, and generalise the @wordpress/boot
+  SPA-page handling with body:has(.boot-layout-container) so Connectors,
+  the AI plugin, AI Services and any future core SPA admin page are all
+  covered by one rule.
 
 = 0.1.10 =
 * Block editor, big pass: retarget the @wordpress/components design tokens
