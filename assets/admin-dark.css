@@ -1439,6 +1439,17 @@ tt,
 	color: var(--oad-text) !important;
 	border-color: var(--oad-border) !important;
 }
+/* Sidebar accordion header on hover: core paints #f0f0f0 with no matching
+ * text-colour change, so the token-retargeted light label goes near-
+ * invisible on a light hover chip. */
+.components-panel__body > .components-panel__body-title:hover {
+	background: var(--oad-surface-2) !important;
+}
+/* The chevron itself is a hardcoded #1e1e1e in core (not a token), so it
+ * was only ever legible by accident against that light hover chip. */
+.components-panel__body-toggle .components-panel__arrow {
+	color: var(--oad-text) !important;
+}
 /* Canvas frame around the iframe (core paints it #ddd) */
 .editor-visual-editor,
 .edit-post-visual-editor,

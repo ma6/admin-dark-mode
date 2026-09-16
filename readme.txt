@@ -3,7 +3,7 @@ Contributors: martingude
 Tested up to: 6.7
 Requires at least: 6.3
 Requires PHP: 7.4
-Stable tag: 0.2.1
+Stable tag: 0.2.2
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,14 @@ fields, borders and focus rings invisible. This one does neither.
 3. Pick a scheme from the toolbar or your profile. New users start on Auto.
 
 == Changelog ==
+
+= 0.2.2 =
+* Fixed: hovering a sidebar accordion header (e.g. "Hero image") painted
+  the row a plain light grey from an unstyled core hover rule, leaving the
+  token-retargeted light label text unreadable against it.
+* Fixed: the accordion's chevron is a hardcoded core colour rather than a
+  token, so it was only ever legible by accident against that light hover
+  background.
 
 = 0.2.1 =
 * Fixed: media modal's bottom action bar (e.g. "Set featured image") stayed
