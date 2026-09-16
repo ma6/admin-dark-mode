@@ -12,16 +12,11 @@
  * Text Domain:       admin-dark-mode
  * Update URI:        false
  *
- * Its own repository since 2026-09-10, extracted from the `onygo.26` monorepo
- * (`plugins/onygo-admin-dark/`) with history intact. No dependency on any theme
- * or on Neon. wp-admin is not a Neon surface: Neon's token layer is not loaded
- * here and pulling it in would fight core's own reset. The palette in
- * assets/admin-dark.css is therefore raw hex, each value picked against a
- * calculated WCAG 2.2 contrast target — the figures are in readme.txt.
- *
- * The internal prefix stays `oad_` / `OAD_` and the user-meta key stays
- * `oad_scheme` (from the plugin's original name) so existing installs keep
- * every saved preference across the rename.
+ * No dependency on any theme. wp-admin is not a themeable surface: no
+ * design-token layer is loaded here, and pulling one in would fight core's
+ * own reset. The palette in assets/admin-dark.css is therefore raw hex,
+ * each value picked against a calculated WCAG 2.2 contrast target — the
+ * figures are in readme.txt.
  *
  * @package AdminDarkMode
  */

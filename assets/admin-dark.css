@@ -1,5 +1,5 @@
 /*
- * Onygo Admin Dark Mode — wp-admin, the login screen and the block-editor
+ * Admin Dark Mode — wp-admin, the login screen and the block-editor
  * chrome. Colours only: every declaration here touches color, background,
  * border-color, box-shadow or outline — never layout — so the heavy use of
  * !important (needed to override core's mature stylesheet in place) can't

@@ -1,8 +1,7 @@
 # AGENTS.md — Admin Dark Mode
 
-A standalone WordPress plugin — its own repository since 2026-09-10, extracted
-from the `onygo.26` monorepo (`plugins/onygo-admin-dark/`) with its history
-intact. **No dependency on any theme or on Neon** — keep it that way.
+A standalone WordPress plugin. **No dependency on any theme** — keep it that
+way.
 
 ## Workflow
 
@@ -27,14 +26,13 @@ An accessible dark colour scheme for wp-admin, the login screen and the
 block editor. Colours only: every CSS declaration touches `color`,
 `background`, `border-color`, `box-shadow` or `outline` — never layout.
 
-## Why it does not consume Neon
+## Why it does not consume a design-token layer
 
-wp-admin is not a Neon surface. Neon's token layer is not enqueued there and
-loading it would fight core's own reset. So this plugin uses raw hex, which
-would be a violation anywhere in the theme. Each value is picked against a
-**calculated** WCAG 2.2 target — the figures are in the header comment of
-`assets/admin-dark.css` and in `readme.txt`. If you change a colour,
-recalculate; do not estimate.
+wp-admin is not a themeable surface, so no design-token layer is enqueued
+there and pulling one in would fight core's own reset. This plugin uses raw
+hex instead. Each value is picked against a **calculated** WCAG 2.2 target —
+the figures are in the header comment of `assets/admin-dark.css` and in
+`readme.txt`. If you change a colour, recalculate; do not estimate.
 
 ## Non-negotiables
 

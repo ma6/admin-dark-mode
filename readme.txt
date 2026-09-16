@@ -90,10 +90,10 @@ fields, borders and focus rings invisible. This one does neither.
   token-retargeted light label text read white-on-white.
 
 = 0.2.0 =
-* Repackaged as its own repo: main file, text domain and plugin name drop the
-  "onygo" prefix (slug is now `admin-dark-mode`). Internal `oad_` / `OAD_`
-  prefixes and the `oad_scheme` user-meta key are unchanged, so an existing
-  install keeps every saved preference.
+* Repackaged as its own repo: main file, text domain and plugin name are now
+  `admin-dark-mode` throughout. Internal `oad_` / `OAD_` prefixes and the
+  `oad_scheme` user-meta key are unchanged, so an existing install keeps
+  every saved preference.
 * Added LICENSE (GPL-2.0), README.md and CONTRIBUTING.md.
 
 = 0.1.11 =
