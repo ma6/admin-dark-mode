@@ -13,17 +13,18 @@ input borders clear SC 1.4.11.
 
 ## Install
 
-No release packages yet — build the ZIP from a checkout:
+Download the ZIP from the [latest release](https://github.com/ma6/admin-dark-mode/releases/latest),
+then **Plugins → Add New → Upload Plugin**, or unzip it into
+`wp-content/plugins/`. Activate, then pick a scheme from the toolbar or your
+profile screen; new users start on Auto. Requires WordPress 6.3+ and PHP
+7.4+.
+
+To build the ZIP from a checkout instead (e.g. for an unreleased change):
 
 ```bash
 git clone https://github.com/ma6/admin-dark-mode.git
 zip -r admin-dark-mode.zip admin-dark-mode -x '.git/*'
 ```
-
-Then **Plugins → Add New → Upload Plugin**, or copy the `admin-dark-mode`
-folder into `wp-content/plugins/`. Activate, then pick a scheme from the
-toolbar or your profile screen; new users start on Auto. Requires WordPress
-6.3+ and PHP 7.4+.
 
 ## Scope
 
