@@ -3,7 +3,7 @@ Contributors: martingude
 Tested up to: 6.7
 Requires at least: 6.3
 Requires PHP: 7.4
-Stable tag: 0.2.0
+Stable tag: 0.2.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,14 @@ fields, borders and focus rings invisible. This one does neither.
 3. Pick a scheme from the toolbar or your profile. New users start on Auto.
 
 == Changelog ==
+
+= 0.2.1 =
+* Fixed: media modal's bottom action bar (e.g. "Set featured image") stayed
+  a plain white strip because core paints it via a more specific nested
+  selector than our `.media-frame-toolbar` override reached.
+* Fixed: the Replace/Remove chips over a set featured image in the editor
+  sidebar were unreadable — a frosted white core background plus our
+  token-retargeted light label text read white-on-white.
 
 = 0.2.0 =
 * Repackaged as its own repo: main file, text domain and plugin name drop the

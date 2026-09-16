@@ -1209,7 +1209,8 @@ ul.category-tabs li:not(.tabs) a,
 .media-frame .attachments-browser .media-toolbar,
 .attachments-browser .media-toolbar,
 .media-frame.mode-grid .attachments-browser .media-toolbar,
-.edit-attachment-frame .details-image {
+.edit-attachment-frame .details-image,
+.media-frame-toolbar .media-toolbar {
 	background-color: var(--oad-surface) !important;
 	color: var(--oad-text) !important;
 	border-color: var(--oad-border) !important;
@@ -1469,6 +1470,13 @@ tt,
 	background: var(--oad-surface-2) !important;
 	color: var(--oad-text) !important;
 	box-shadow: inset 0 0 0 1px var(--oad-border-strong) !important;
+}
+/* Replace/Remove overlay on a set featured image: core paints a frosted
+ * white chip (rgba(255,255,255,.75)) with no explicit text colour, so the
+ * token-retargeted light label reads white-on-white. */
+.editor-post-featured-image__action {
+	background: rgba(36, 39, 48, 0.75) !important; /* --oad-surface at 75% */
+	color: var(--oad-text) !important;
 }
 .components-button.is-primary {
 	background: var(--oad-accent) !important;
